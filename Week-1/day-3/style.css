@@ -1,0 +1,37 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    background-image: url(topography.png)
+} 
+
+#main-content {
+    padding: 30px 10%;
+}
+header {
+   background-color: #333; 
+   padding: 9px 10% 9px 10%;
+   text-align: right;
+   width: 90%;
+}
+header img{
+  float:left
+}
+
+header a {
+    color: #ff0099
+}
+
+
+hr { border: 0 none;
+    border-top: 2px dashed #322f32;
+    background: none;
+    height:0;
+    width: 24px
+  }
+
+footer h1 {
+  text-align: center;
+}
+
+  main h2 {color: #ff0099;
+}

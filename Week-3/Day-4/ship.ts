@@ -74,6 +74,14 @@ public searchByName(name: string) {
  }
 }
 
+public nextAlive(){
+    for(let i=0;i<this.manpower();i++){
+        if(this._crew[i].getHealth()===false){
+            return this._crew[i]
+        }
+    }
+}
+
 public crewAlive(){
     let counter:number=0
     for(let i = 0; i < this.manpower(); i++){
@@ -107,7 +115,7 @@ if(this.manpower() - this._captain.getIntoxicationLevel() > otherShip.manpower()
     for(let k=0;k<Math.floor(Math.random()*4);k++){
         this._captain.drinkSomeRum()
         }
-    return `The ship won`
+    return `The ship won. Let's have a party!`
 }
 else{
     for(let i=0;i<this.manpower();i++){
@@ -141,6 +149,42 @@ for(let i=0;i<this._cannons;i++){
     }
 }
 }
+
+public boarding(defender:Ship){
+    let i=0
+    let k=0
+    let j=0
+for(;;){
+if(i%2===0){
+    if(k>=this._crew.length){
+        k=0
+    }
+    if(this._crew[k].getHealth()===true){
+        k++
+    }
+    this._crew[k].attack(defender.nextAlive())
+    if(defender.crewAlive()===0){
+        return `${this._name} successfully boarded ${defender._name}`
+    }
+    k++
+}
+else{
+    if(j>=defender._crew.length){
+        j=0
+    }
+    if(defender._crew[j].getHealth()===true){
+        j++
+    }
+    defender._crew[j].attack(this.nextAlive())
+    if(this.crewAlive()===0){
+        return `${this._name} failed to boarded ${defender._name}`
+    }
+    j++
+}
+i++
+}
+}
+
 public engagement(defender:Ship){
     let i=0
 for(;;){
@@ -172,4 +216,4 @@ barbarossa.fillShip()
 console.log(titanic.manpower())
 console.log(barbarossa.manpower())
 //console.log(titanic.battle(barbarossa))
-console.log(barbarossa.engagement(titanic))
+console.log(barbarossa.boarding(titanic))

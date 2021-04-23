@@ -35,4 +35,4 @@ ctx.lineTo(0,size*(Math.ceil(height/size)));
 ctx.stroke();
 }
 
-boardmaker(985,824,36)
+boardmaker(1200,400,40)

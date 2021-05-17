@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    background-color: yellow;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items:flex-end
+}
+ul {
+    list-style-type: none;
+    width: 100%;
+}
+li{
+    background-color: purple;
+width: 200px;
+height: 200px;
+margin-left: 20px;
+}

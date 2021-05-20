@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title> Cocktail list </title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Cocktails</h1>
+    <header>
+        <ul>
+        <li class='alcoholList'><a href="http://localhost:3000">All</a></li>
+        <% for( let i = 0; i < alcoholList.length;i++){ %>
+            <li class='alcoholList'>
+                <a href="http://localhost:3000?alcohol=<%= alcoholList[i] %>"><%= alcoholList[i] %></a>
+             </li>
+        <% } %>
+    </ul>
+    </header>
+
+<div class= 'main'>
+    <ul class='names'>
+        <h2>
+            Name
+        </h2>
+        <% for(let i = 0 ; i < cocktails.length;i++){ %>
+            <li class='name'>
+                    <%= cocktails[i].name %>
+            </li>
+            <p class= 'ingredients'>
+               <%let ingredients = cocktails[i].contains.join(", ") %>
+               <%= ingredients %>
+            </p>
+            <% } %>
+    </ul>
+    <ul class= 'prices'>
+        <h2 class= 'priceHeader'>
+            Price
+        </h2>
+        <% for(let i = 0 ; i < cocktails.length;i++){ %>
+        <li class='price'>
+            <%= cocktails[i].price %> Ft
+        </li>
+        <% } %>
+    </ul>
+</div>
+  </body>
+</html>

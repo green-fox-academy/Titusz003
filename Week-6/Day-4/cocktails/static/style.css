@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.name{
+    background-color:lightgrey;
+}
+
+ul {
+    list-style-type: none;
+}
+
+header {
+    overflow: hidden;
+    background-color: #333333;
+  }
+  
+  .alcoholList {
+    float: left;
+  }
+  
+  .alcoholList a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  
+  li a:hover {
+    background-color: #111111;
+  }
+
+  h1 {
+      margin: 20px 0px;
+  }
+
+  body{
+      margin: 0px 20%;
+  }
+  
+  .main{
+      position: relative;
+      
+  }
+
+  .names{
+      position: absolute;
+      top:0%;
+      width: 70%;
+      font-size: 30px;
+  }
+
+  .prices{
+      position: absolute;
+      top: 0%;
+      left: 70%;
+      width: 30%;
+  }
+
+  .name {
+      font-size: 25px;
+  }
+
+  .ingredients{
+      font-size: 20px;
+  }
+
+  .price{
+    background-color:lightgrey;
+    margin-bottom: 23px;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .priceHeader{
+      text-align: center;
+  }
+
+  h2{
+      font-size: 30px;
+  }
+
+  h1{
+      font-size: 40px;
+  }

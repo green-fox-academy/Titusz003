@@ -63,15 +63,21 @@ cocktails.forEach(element => {
         element.name+= ' (non-Alcoholic)'
     }
 });
-function alcfilter(type){
-let filteredArr= []
-cocktails.forEach(element => {
-    element.contains.forEach(alcohol => {
-        if(alcohol===type){
-            filteredArr.push(element)
+
+function alcfilter(type=0){
+  let filteredArr= []
+  if(type===0){
+    return cocktails
+  }
+  else{
+cocktails.forEach(i => {
+    i.contains.forEach(k => {
+        if(k===type){
+            filteredArr.push(i)
         }
     });
 });
+  }
 return filteredArr
 }
 
@@ -80,12 +86,7 @@ app.set('view engine', 'ejs');
 app.use('/static', express.static('static'));
 
 app.get('/', (req, res) => {
-if(Object.keys(req.query).length===0){
-  res.render('home',{cocktails:cocktails,alcoholList:alcoholList})
-}
-else{
-res.render('home',{cocktails:alcfilter(req.query.alcohol),alcoholList:alcoholList});
-}
+res.render('home',{cocktails:alcfilter(req.query.alcohol),alcoholList:alcoholList,query:`${req.query.alcohol}`});
 })
 
 

@@ -23,6 +23,9 @@
         <h2>
             Name
         </h2>
+        <% if(cocktails.length===0){%>
+            <p class= 'message'> We don't have a cocktail that contains <%= query %>. :(</p>
+        <% } %>
         <% for(let i = 0 ; i < cocktails.length;i++){ %>
             <li class='name'>
                     <%= cocktails[i].name %>

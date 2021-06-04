@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    display: grid;
+    width: 60%;
+    height: 500px;
+    margin: 0 20%;
+    background-color: black;
+    row-gap: 10px;
+    column-gap: 10px;
+    grid-template-areas: 
+    "blue1 yellow1 yellow1"
+    "blue2 yellow1 yellow1"
+    "blue3 blue4 blue5";
+}
+
+div {
+    background-color: blue;
+}
+#blue1{
+    grid-area: blue1;
+}
+#blue2{
+    grid-area: blue2;
+}
+#blue3{
+    grid-area: blue3;
+}
+#blue4{
+    grid-area: blue4;
+}
+#blue5{
+    grid-area: blue5;
+}
+
+#yellow1 {
+    grid-area: yellow1;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#green1 {
+    background-color: green;
+    width: 50%;
+    height: 60%;
+}

@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#main{
+    display: grid;
+    row-gap: 10px;
+    column-gap: 10px;
+    width: 1200px;
+    margin: 0 auto;
+    grid-template-areas: 
+    "navigation"
+    "main"
+    "footer";
+}
+#navigation{
+    background-color: blue;
+    grid-area: navigation;
+    height: 70px;
+    display: grid;
+    align-content: center;
+    column-gap: 10px;
+    grid-template-columns: 150px 80px 70px 50px;
+}
+#content{
+    margin: 0 50px;
+    display: grid;
+    grid-area: main;
+    height: 500px;
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-areas: 
+    "content1 content2"
+    "content3 content4";
+}
+#content1{
+    grid-area: content1;
+    background-color: yellowgreen;
+}
+#content2{
+    grid-area: content2;
+    background-color: yellowgreen;
+}
+#content3{
+    grid-area: content3;
+    background-color: yellowgreen;
+}
+#content4{
+    display: grid;
+    grid-area: content4;
+    grid-template-areas:
+    "subcontent1 subcontent2";
+    column-gap: 10px;
+}
+#footer{
+    background-color: gray;
+    grid-area: footer;
+    height: 50px;
+    margin: 0 50px;
+}
+
+.link{
+    background-color: cyan;
+    height: 35px;
+
+}
+#firstLink{
+    margin-left: 50px;
+}
+
+#subcontent1{
+    grid-area: subcontent1;
+}
+#subcontent2{
+    grid-area: subcontent2;
+}
+.subcontent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellowgreen;
+}
+
+.image{
+    background-color: red;
+    width: 70%;
+    height: 80%;
+}
+
+h2{
+    margin: 10px;
+}
+p{
+    margin: 10px;
+}

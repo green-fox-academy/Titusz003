@@ -1,6 +1,5 @@
 'use strict'
 
-import { Console, timeStamp } from 'node:console'
 import Aircraft from './aircraft'
 import F16 from './F-16'
 import F35 from './F-35'

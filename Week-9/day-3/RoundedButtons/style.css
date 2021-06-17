@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: purple;
+    height: 800px;
+}
+.button--blue{
+    background-image: linear-gradient(hsl(240, 100%, 50%),hsl(240, 100%, 65%));
+    box-shadow:hsl(240, 100%, 70%) 0px 4px;
+}
+.button--green{
+    background-image: linear-gradient( hsl(120, 100%, 25%),hsl(120, 100%, 30%));
+    box-shadow:hsl(120, 100%, 35%) 0px 4px;
+}
+.button--red{
+    background-image: linear-gradient( hsl(0, 100%, 50%),hsl(0, 100%, 60%));
+    box-shadow:hsl(0, 80%, 65%) 0px 4px;
+}
+
+.button{
+    font-size: 20px;
+    width: 120px;
+    height: 60px;
+    border-radius: 10%;
+    color: white;
+    border: 0px;
+}
+
+.button:hover{
+    filter: brightness(115%);
+}
+
+.button:active{
+    filter: brightness(85%);
+}

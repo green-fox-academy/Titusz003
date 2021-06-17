@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 800px;
+    background-color: darkgray;
+}
+
+.dropdownButton{
+    padding: 20px;
+    background-color: black;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownContent{
+    display: none;
+    
+}
+.dropdown:hover .dropdownContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdownButton > .far{
+    color: white;
+}
+[data-action="Delete"]{
+background-color: red;
+}
+[data-action="Confirm"]{
+    background-color: green;
+}
+
+[data-action="Delete"]>.far{
+    color:red;
+    background-color: black;
+    padding: 10px;
+}
+
+
+.fa-check{
+    color: green;
+    background-color: black;
+    padding: 10px;
+}
+.dropdownContent>button{
+    padding: 10px 20px;
+    color:white;
+}

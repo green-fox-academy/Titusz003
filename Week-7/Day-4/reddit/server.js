@@ -1,11 +1,12 @@
 'use strict'
 
-let mysql = require('mysql');
+const mysql = require('mysql');
 const express = require('express');
-let app = express()
+const app = express()
 app.use(express.json())
+app.use(express.static('static'))
 
-let conn = mysql.createConnection({
+const conn = mysql.createConnection({
     host:'localhost',
     user: 'root',
     password: 'password',
@@ -23,6 +24,18 @@ conn.connect((err) => {
         console.log('Connected to the database.')
     }
 });
+
+app.get('/',(req,res) => {
+    res.sendFile(__dirname + '/static/main.html')
+})
+
+app.get('/newPost',(req,res) => {
+    res.sendFile(__dirname + '/Static/submit.html')
+})
+
+app.get('/modify', (req,res) => {
+    res.sendFile(__dirname+ '/static/modify.html')
+})
 
 app.get('/posts',(req,res) => {
     conn.query('SELECT * FROM posts;',(err,rows) =>{
@@ -47,15 +60,15 @@ app.post('/posts',(req,res) => {
 });
 
 app.put('/posts/:id/upvote',(req,res) => {
-    let score = 0
-    conn.query(`SELECT score FROM posts WHERE id = ${req.params.id}`,(err,result) => {
+    let score = null
+    conn.query(`SELECT score FROM posts WHERE id = ?`,[req.params.id],(err,result) => {
         if(err){
             res.status(500).json(err);
             return
         }
         score=result[0].score+1
 
-        conn.query(`UPDATE posts SET score = ${score} WHERE id = ${req.params.id}`,(err,result) => {
+        conn.query(`UPDATE posts SET score = ? WHERE id = ?`,[score,req.params.id],(err,result) => {
             if(err){
                 res.status(500).json(err);
                 return
@@ -66,28 +79,27 @@ app.put('/posts/:id/upvote',(req,res) => {
     })
     });
 
-    app.put('/posts/:id/downvote',(req,res) => {
-        let score = 0
-        conn.query(`SELECT score FROM posts WHERE id = ${req.params.id}`,(err,result) => {
+app.put('/posts/:id/downvote',(req,res) => {
+    let score = null
+    conn.query(`SELECT score FROM posts WHERE id = ?`,[req.params.id],(err,result) => {
+        if(err){
+            res.status(500).json(err);
+            return
+        }
+        score=result[0].score-1
+    
+        conn.query(`UPDATE posts SET score = ? WHERE id = ?`,[score,req.params.id],(err,result) => {
             if(err){
                 res.status(500).json(err);
                 return
             }
-            score=result[0].score-1
-    
-            conn.query(`UPDATE posts SET score = ${score} WHERE id = ${req.params.id}`,(err,result) => {
-                if(err){
-                    res.status(500).json(err);
-                    return
-                }
-                res.status(200).send('Downvote updated')
-            })
-    
+            res.status(200).send('Downvote updated')
         })
-        });
+    })
+    });
 
-        app.put('/posts/:id/delete', (req,res) => {
-            conn.query(`DELETE FROM posts WHERE id = ${req.params.id}`, (err,result) => {
+        app.delete('/posts/:id/', (req,res) => {
+            conn.query(`DELETE FROM posts WHERE id = ?`,[req.params.id], (err,result) => {
                 if(err){
                     res.status(500).json(err);
                     return
@@ -97,12 +109,12 @@ app.put('/posts/:id/upvote',(req,res) => {
         });
 
         app.put('/posts/:id', (req,res) => {
-            conn.query(`SELECT title FROM posts WHERE id = ${req.params.id}`, (err,result) => {
+            conn.query(`SELECT title FROM posts WHERE id = ?`,[req.params.id], (err,result) => {
                 if(err){
                     res.status(500).json(err);
                     return
                 }
-            conn.query(`UPDATE posts SET title = ? WHERE id = ${req.params.id}`,[req.body.title], (err,result) => {
+            conn.query(`UPDATE posts SET title = ?, url = ? WHERE id = ?`,[req.body.title,req.body.url,req.params.id], (err,result) => {
                 if(err){
                     res.status(500).json(err);
                     return
